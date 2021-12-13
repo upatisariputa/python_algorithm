@@ -30,42 +30,25 @@ file_list_in.sort()
 # 2
 # 3
 
-
-# def DFS(v, n, check):
-#   if v==n+1:
-#     for i in range(1, n+1):
-#       if check[i]==1:
-#         print(i, end=' ')
-#     print()
-#   else:
-#     check[v]=1
-#     DFS(v+1, n, check)
-#     check[v]=0
-#     DFS(v+1, n, check) 
-
-
-# def Algorithm(n):
-#   check=[0]*(n+1)
-#   DFS(1, n, check)
-#   print('종료')
-
-
+# 전위순회
 
 def algorithm(n): 
-  check = [0]*(n+1)
+  check_list=[0]*(n)
   def dfs(level):
-    if level == n+1:
-      for i in range(1, n+1):
-        if check[i]==1:
-          print(i, end=" ")
+    if level==n:
+      for i in range(n):
+        if check_list[i] == 1:
+          print(i+1, end='')
+      print()
     else:
-      check[level]=1
+      check_list[level]=1
       dfs(level+1)
-      check[level]=0
+      check_list[level]=0
       dfs(level+1)
   dfs(0)
 
 start = time.time()
+
 for file in file_list_in:
   sys.stdin=open(path + file, 'rt')
   n = int(input())
