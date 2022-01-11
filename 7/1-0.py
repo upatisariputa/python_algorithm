@@ -34,40 +34,31 @@ file_list_in.sort()
 # ▣출력예제 1
 # 41
 
-def Algorithm(level, r, t):
-  global time_sum result_sum
-  if time_sum > m and result_sum > r:
+def dfs(level, sum, time):
+  global res
+  if time>m:
     return
+  if level==n:
+    if sum>res:
+      res = sum
   else:
-    result_sum = r
-    check[level]=1
-    for i in range(level, n):
-      if check[i] == 1:
-        Algorithm(level +1, )
-
-
-
+    dfs(level+1, sum+pv[level], time+pt[level])
+    dfs(level+1, sum, time)
 
 if __name__ == "__main__":
   start = time.time()
   for file in file_list_in:
     sys.stdin=open(path + file, 'rt')
     input=sys.stdin.readline
-    # s=input().rstrip()
-    # n = int(input())
     n, m = map(int, input().split())
-    # l = list(map(int, input().split()))
-    # o = int(input())
-    # l=[int(input()) for _ in range(n)]
-    # l.reverse()
-    l =[list(map(int, input().split())) for _ in range(n)]
-    # m = int(input())
-    # if n == 7:
-    # print(l)
-    check = [0]*n
-    time_sum=0
-    result_sum=0
-    Algorithm(0,0)
-    
+    pv=list()
+    pt=list()
+    for i in range(n):
+      a, b = map(int, input().split())
+      pv.append(a)
+      pt.append(b)
+    res = -214700000
+    dfs(0,0,0)
+    print(res)
 
   print('실행시간 :', time.time() - start)
