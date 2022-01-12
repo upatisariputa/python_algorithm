@@ -40,25 +40,16 @@ file_list_in.sort()
 # ▣ 출력예제 1
 # 2
 
-# def dfs(level, number_list_length, sum_list ):
-#   if level == n:
-#     list_one=[]
-#     list_zero=[]
-#     for i in range(0, n):
-#       if check_list[i]==1:
-#         list_one.append(l[i])
-#       else:
-#         list_zero.append(l[i])
-#     temp_list.append(sum(list_one))
-#     dfs(level, )
-#   else:
-#     check_list[level]=1
-#     dfs(level+1, )
-#     check_list[level]=0
-#     dfs(level+1)
 
 def dfs(level, sum_list):
-  print(level)
+  global result
+  if level == n:
+    if 0 < sum_list <= s:
+      result.add(sum)
+  else:
+    dfs(level+1, sum+l[level])
+    dfs(level+1, sum-l[level])
+    dfs(level+1, sum)
 
 
 
@@ -69,6 +60,7 @@ if __name__ == "__main__":
     input=sys.stdin.readline
     n = int(input())
     l = list(map(int, input().split()))
+    s = sum(l)
     result = 0
     temp_list=list()
     # check_list=list(range(sum(l)))
