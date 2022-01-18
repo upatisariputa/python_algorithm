@@ -69,9 +69,6 @@ def calculate(n,m,l):
   print(res)
 
 
-# def algorithm ():
-#   print()
-
 start = time.time()
 for file in file_list_in:
   sys.stdin=open(path + file, 'rt')
@@ -83,25 +80,3 @@ for file in file_list_in:
 
 
 print('실행시간 :', time.time() - start)
-
-
-# def calculate (n,m,l):
-#   sum_list = sum(l)
-#   divide_result = sum_list//m
-#   print(divide_result)
-#   def innerFn (divide_result, l):
-#     result=0
-#     for i in l:
-#       result += i//divide_result
-#       print(result)
-#       return
-#     if m < result:
-#       divide_result = divide_result//2
-#       innerFn(divide_result, l)
-#     elif m > result:
-#       divide_result = divide_result//2
-#       innerFn(divide_result, l)
-#     elif m == result and divide_result ==0:
-#       print(divide_result)
-#       return
-#   innerFn(divide_result, l)

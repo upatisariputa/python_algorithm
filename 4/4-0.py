@@ -36,24 +36,33 @@ file_list_out.sort()
 # ▣출력예제 1
 # 3
 
-
-def Calculate (n,m,l):
-  
-  print(n, m, l)
-
-def Algorithm ():
-  print()
-
-
 start = time.time()
+
+def count(len):
+    cnt=1
+    ep=Line[0]
+    for i in range(1, n):
+        if Line[i]-ep>=len:
+            cnt+=1
+            ep=Line[i]
+    return cnt
+
 for file in file_list_in:
   sys.stdin=open(path + file, 'rt')
-  n, m = map(int, input().split())
-  # l = list(map(int, input().split()))
-  l=[int(input()) for _ in range(n)]
-  if n==64:
-    Calculate(n, m,l)
-  # Algorithm(n, m, l)
+  n, c = map(int, input().split())
+  Line=[int(input()) for _ in range(n)]
+  Line.sort()
+  lt=1
+  rt=Line[n-1]
+  while lt<=rt:
+      mid=(lt+rt)//2
+      if count(mid)>=c:
+          res=mid
+          lt=mid+1
+      else:
+          rt=mid-1
+
+  print(res)
 
 
 print('실행시간 :', time.time() - start)

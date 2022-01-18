@@ -88,7 +88,8 @@ if __name__ == "__main__":
           point_max[1]=j
     board_check[point_min[0]][point_max[1]]=1
     dfs(point_min[0], point_min[1])
-    print(result)
+    # print(result)
+    print(board)
 
     
 
