@@ -5,7 +5,7 @@ import re
 import math
 from collections import deque
 
-path="./3/"
+path="./5/"
 file_list=os.listdir(path)
 file_list_in= [file for file in file_list if file.startswith('in')]
 file_list_out= [file for file in file_list if file.startswith('out')]
@@ -17,20 +17,17 @@ start = time.time()
   
 for file in file_list_in:
   sys.stdin=open(path + file, 'rt')
-  str_calculating=input()
-  list_stack=[]
-  result=''
-  for i in str_calculating:
-    if i == '(':
-      list_stack.append(i)
-    if i == ')':
-      result += list_stack.pop()
-    if i == '+' or i == '-':
-      list_stack.append(i)
-    if i == '*' or i == '/':
-      list_stack.append(i)
-    else:
-      result+=i
-
+  n, m = map(int, input().split())
+  q=list(range(1, n+1))
+  dq=deque(q)
+  print(dq)
+  while dq:
+    for _ in range(m-1):
+      cur=dq.popleft()
+      dq.append(cur)
+    dq.popleft()
+    if len(dq)==1:
+      print(dq[0])
+      dq.popleft()
   
 print('실행시간 :', time.time() - start)
